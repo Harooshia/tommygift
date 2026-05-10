@@ -262,7 +262,7 @@
     let currentIndex = 0;
 
     function encodedFile(file) {
-      return encodeURI(file);
+      return file.split("/").map((part) => encodeURIComponent(part)).join("/");
     }
 
     function renderOptions() {

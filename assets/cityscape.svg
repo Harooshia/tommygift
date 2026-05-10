@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Dreamy cityscape at sunset</title>
+  <desc id="desc">A purple and pink city skyline under clouds and stars.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#140d2f"/>
+      <stop offset="0.45" stop-color="#55306f"/>
+      <stop offset="0.75" stop-color="#d66c91"/>
+      <stop offset="1" stop-color="#ffd1a6"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="58%" r="25%">
+      <stop offset="0" stop-color="#fff5bf" stop-opacity="0.95"/>
+      <stop offset="0.45" stop-color="#ff9d9d" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#ff9d9d" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="window" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffd6ef"/>
+      <stop offset="1" stop-color="#fff0a8"/>
+    </linearGradient>
+    <filter id="soft"><feGaussianBlur stdDeviation="10"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+  <g fill="#fff" opacity="0.8">
+    <circle cx="130" cy="100" r="2"/><circle cx="260" cy="180" r="1.8"/><circle cx="390" cy="95" r="1.4"/>
+    <circle cx="510" cy="150" r="2.2"/><circle cx="730" cy="80" r="1.5"/><circle cx="910" cy="135" r="2"/>
+    <circle cx="1180" cy="110" r="1.7"/><circle cx="1390" cy="160" r="2.1"/><circle cx="1510" cy="82" r="1.5"/>
+  </g>
+  <g opacity="0.22" fill="#fff" filter="url(#soft)">
+    <ellipse cx="275" cy="245" rx="230" ry="48"/><ellipse cx="620" cy="210" rx="170" ry="38"/>
+    <ellipse cx="1120" cy="255" rx="280" ry="52"/><ellipse cx="1360" cy="190" rx="150" ry="34"/>
+  </g>
+  <path d="M0 590 C160 540 250 575 390 545 C540 510 670 560 810 520 C960 480 1110 535 1270 500 C1400 472 1510 505 1600 470 L1600 900 L0 900 Z" fill="#191326" opacity="0.72"/>
+  <g fill="#070712">
+    <rect x="0" y="610" width="100" height="290"/><rect x="120" y="545" width="95" height="355"/><rect x="245" y="650" width="125" height="250"/>
+    <rect x="400" y="520" width="110" height="380"/><rect x="540" y="600" width="85" height="300"/><rect x="655" y="470" width="140" height="430"/>
+    <rect x="825" y="585" width="100" height="315"/><rect x="955" y="535" width="120" height="365"/><rect x="1105" y="620" width="95" height="280"/>
+    <rect x="1235" y="500" width="155" height="400"/><rect x="1425" y="565" width="105" height="335"/><rect x="1550" y="630" width="80" height="270"/>
+  </g>
+  <g fill="url(#window)" opacity="0.75">
+    <rect x="35" y="650" width="12" height="38" rx="2"/><rect x="65" y="720" width="12" height="38" rx="2"/>
+    <rect x="150" y="590" width="12" height="34" rx="2"/><rect x="180" y="660" width="12" height="34" rx="2"/>
+    <rect x="285" y="690" width="14" height="32" rx="2"/><rect x="335" y="750" width="14" height="32" rx="2"/>
+    <rect x="440" y="570" width="14" height="40" rx="2"/><rect x="480" y="690" width="14" height="40" rx="2"/>
+    <rect x="700" y="520" width="16" height="44" rx="2"/><rect x="748" y="620" width="16" height="44" rx="2"/>
+    <rect x="990" y="585" width="14" height="38" rx="2"/><rect x="1035" y="705" width="14" height="38" rx="2"/>
+    <rect x="1285" y="555" width="16" height="42" rx="2"/><rect x="1340" y="675" width="16" height="42" rx="2"/>
+    <rect x="1460" y="615" width="14" height="36" rx="2"/><rect x="1500" y="735" width="14" height="36" rx="2"/>
+  </g>
+</svg>
