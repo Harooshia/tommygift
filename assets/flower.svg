@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" role="img" aria-labelledby="title desc">
+  <title id="title">Strelitzia flower</title>
+  <desc id="desc">A bright orange and blue bird-of-paradise flower illustration.</desc>
+  <defs>
+    <linearGradient id="orange" x1="0" x2="1">
+      <stop offset="0" stop-color="#ff9b2f"/>
+      <stop offset="1" stop-color="#ff3f58"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" x2="1">
+      <stop offset="0" stop-color="#42d7ff"/>
+      <stop offset="1" stop-color="#3147d8"/>
+    </linearGradient>
+    <linearGradient id="green" x1="0" x2="1">
+      <stop offset="0" stop-color="#2de07c"/>
+      <stop offset="1" stop-color="#0b6b4e"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="720" height="720" fill="#050505"/>
+  <g transform="translate(78 620) rotate(-18)" filter="url(#glow)">
+    <path d="M0 0 C180 -85 325 -120 560 -330" fill="none" stroke="url(#green)" stroke-width="28" stroke-linecap="round"/>
+    <path d="M280 -180 C355 -260 410 -330 505 -455 C405 -420 335 -340 265 -210Z" fill="url(#orange)"/>
+    <path d="M320 -208 C445 -278 515 -350 610 -500 C480 -455 390 -360 300 -220Z" fill="url(#orange)" opacity="0.92"/>
+    <path d="M350 -235 C430 -340 470 -420 510 -585 C410 -500 350 -395 322 -255Z" fill="url(#orange)" opacity="0.86"/>
+    <path d="M240 -150 C360 -170 455 -205 580 -295 C430 -295 330 -250 230 -165Z" fill="url(#blue)"/>
+    <path d="M215 -132 C330 -120 430 -120 560 -165 C420 -205 315 -195 210 -145Z" fill="#7a4df0"/>
+    <path d="M175 -90 C300 -85 390 -95 510 -135 C355 -170 250 -150 168 -105Z" fill="url(#green)"/>
+  </g>
+</svg>
