@@ -1,0 +1,184 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  .bday-site { min-height: 100vh; background: linear-gradient(160deg, #fce4ec 0%, #f8bbd0 30%, #e1bee7 70%, #f3e5f5 100%); font-family: 'Lato', sans-serif; color: #5d2d52; overflow: hidden; }
+  .page { display: none; min-height: 100vh; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; position: relative; animation: fadeIn 0.8s ease; }
+  .page.active { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .petal { position: absolute; width: 12px; height: 16px; border-radius: 50% 0 50% 0; opacity: 0.25; animation: float linear infinite; pointer-events: none; }
+  @keyframes float { 0% { transform: translateY(-20px) rotate(0deg); opacity: 0; } 10% { opacity: 0.25; } 90% { opacity: 0.2; } 100% { transform: translateY(110vh) rotate(360deg); opacity: 0; } }
+  .card { background: rgba(255,255,255,0.6); backdrop-filter: blur(10px); border-radius: 24px; padding: 2.5rem 2rem; max-width: 520px; width: 100%; text-align: center; border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 8px 40px rgba(180,80,140,0.12); position: relative; z-index: 1; }
+  .page-title { font-family: 'Playfair Display', serif; font-size: 2.6rem; line-height: 1.15; color: #8b2a6a; margin-bottom: 0.5rem; }
+  .page-title em { font-style: italic; color: #c2185b; }
+  .subtitle { font-size: 1rem; color: #a0527a; font-weight: 300; letter-spacing: 0.04em; margin-bottom: 1.5rem; }
+  .hearts-row { font-size: 1.5rem; letter-spacing: 0.3em; margin-bottom: 1.5rem; color: #e91e8c; }
+  .btn { display: inline-block; background: linear-gradient(135deg, #e91e8c, #c2185b); color: white; border: none; border-radius: 50px; padding: 0.75rem 2rem; font-family: 'Lato', sans-serif; font-size: 0.95rem; letter-spacing: 0.08em; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 15px rgba(194,24,91,0.3); }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(194,24,91,0.4); }
+  .btn:active { transform: scale(0.97); }
+  .btn-ghost { background: transparent; color: #8b2a6a; border: 1.5px solid #e08ab0; box-shadow: none; margin-top: 0.75rem; }
+  .btn-ghost:hover { background: rgba(255,255,255,0.5); box-shadow: none; }
+  .nav-dots { display: flex; gap: 8px; justify-content: center; position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); z-index: 10; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(194,24,91,0.3); cursor: pointer; transition: background 0.3s, transform 0.2s; }
+  .dot.active { background: #c2185b; transform: scale(1.3); }
+  .message-card { background: rgba(255,255,255,0.5); border-radius: 16px; padding: 1.25rem 1.5rem; margin: 0.75rem 0; text-align: left; border: 1px solid rgba(255,255,255,0.7); }
+  .message-author { font-size: 0.8rem; color: #b06090; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .message-text { font-family: 'Playfair Display', serif; font-size: 1rem; color: #6a2050; line-height: 1.7; font-style: italic; }
+  .music-wrapper { margin-top: 1rem; width: 100%; }
+  .music-label { font-size: 0.8rem; color: #b06090; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .yt-embed { width: 100%; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 20px rgba(180,80,140,0.15); aspect-ratio: 16/9; border: none; }
+  .memory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 0.75rem; width: 100%; }
+  .memory-box { background: rgba(255,255,255,0.5); border-radius: 14px; padding: 1rem; border: 1px solid rgba(255,255,255,0.7); transition: transform 0.2s, background 0.2s; }
+  .memory-box:hover { transform: scale(1.03); background: rgba(255,255,255,0.75); }
+  .memory-icon { font-size: 1.6rem; margin-bottom: 0.4rem; }
+  .memory-title { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #8b2a6a; font-style: italic; }
+  .memory-desc { font-size: 0.78rem; color: #a0527a; margin-top: 0.25rem; line-height: 1.4; }
+  .wish-list { list-style: none; margin-top: 0.75rem; text-align: left; }
+  .wish-list li { display: flex; align-items: flex-start; gap: 10px; padding: 0.6rem 0; border-bottom: 0.5px solid rgba(194,24,91,0.12); font-size: 0.95rem; color: #6a2050; }
+  .wish-list li:last-child { border-bottom: none; }
+  .wish-num { min-width: 24px; height: 24px; border-radius: 50%; background: rgba(194,24,91,0.12); color: #c2185b; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; font-weight: 400; margin-top: 2px; }
+</style>
+
+<div class="bday-site" id="site">
+
+  <div class="page active" id="page-0">
+    <div class="card">
+      <div class="hearts-row">❀ ✿ ❀</div>
+      <h1 class="page-title">Happy Birthday,<br><em>Tommy</em> 🎂</h1>
+      <p class="subtitle">a little something made just for you</p>
+      <p style="font-size:0.9rem; color:#a0527a; font-weight:300; line-height:1.7; margin-bottom:1.5rem;">
+        You make every day feel like something worth celebrating.<br>Today is all about you. 💕
+      </p>
+      <button class="btn" onclick="goTo(1)">Open your gift →</button>
+    </div>
+  </div>
+
+  <div class="page" id="page-1">
+    <div class="card">
+      <div class="hearts-row">♪ ♫ ♪</div>
+      <h2 class="page-title" style="font-size:2rem;">Your song</h2>
+      <p class="subtitle">play it loud 🎧</p>
+      <div class="music-wrapper">
+        <div class="music-label">Now playing — Psycho · Bladee</div>
+        <iframe class="yt-embed"
+          src="https://www.youtube.com/embed/zTl5By1KQLA?autoplay=0&rel=0&modestbranding=1"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; margin-top:1.25rem; gap:0.5rem;">
+        <button class="btn" onclick="goTo(2)">Next →</button>
+        <button class="btn btn-ghost" onclick="goTo(0)">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-2">
+    <div class="card">
+      <div class="hearts-row">✦ ✧ ✦</div>
+      <h2 class="page-title" style="font-size:2rem;">Our memories</h2>
+      <p class="subtitle">the ones I keep coming back to 🌸</p>
+      <div class="memory-grid">
+        <div class="memory-box">
+          <div class="memory-icon">🌙</div>
+          <div class="memory-title">Late night talks</div>
+          <div class="memory-desc">hours disappearing because you're just that easy to talk to</div>
+        </div>
+        <div class="memory-box">
+          <div class="memory-icon">😂</div>
+          <div class="memory-title">Your laugh</div>
+          <div class="memory-desc">honestly one of my favourite sounds in the world</div>
+        </div>
+        <div class="memory-box">
+          <div class="memory-icon">🎮</div>
+          <div class="memory-title">Gaming together</div>
+          <div class="memory-desc">even losing is fun when it's with you</div>
+        </div>
+        <div class="memory-box">
+          <div class="memory-icon">🤍</div>
+          <div class="memory-title">Just your presence</div>
+          <div class="memory-desc">being around you is everything, you know what I mean</div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; margin-top:1.25rem; gap:0.5rem;">
+        <button class="btn" onclick="goTo(3)">Next →</button>
+        <button class="btn btn-ghost" onclick="goTo(1)">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-3">
+    <div class="card">
+      <div class="hearts-row">❝ ❞</div>
+      <h2 class="page-title" style="font-size:2rem;">A message<br><em>for you</em></h2>
+      <div class="message-card">
+        <div class="message-author">from me, to you</div>
+        <div class="message-text">
+          "Happy birthday. You are one of the most genuine people I've ever known and you're the best and always will be. I hope you have a great year ahead — I'll always be your biggest supporter and I love you SOOO MUCH."
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:center; margin-top:1.25rem; gap:0.5rem;">
+        <button class="btn" onclick="goTo(4)">Next →</button>
+        <button class="btn btn-ghost" onclick="goTo(2)">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-4">
+    <div class="card">
+      <div class="hearts-row">🌸 ✨ 🌸</div>
+      <h2 class="page-title" style="font-size:2.2rem;">My birthday<br><em>wishes for you</em></h2>
+      <ul class="wish-list">
+        <li><span class="wish-num">1</span>That you laugh until your stomach hurts, at least once today</li>
+        <li><span class="wish-num">2</span>That this is the year you get everything you want — every single thing</li>
+        <li><span class="wish-num">3</span>That you feel as loved as you actually are — which is a lot</li>
+        <li><span class="wish-num">4</span>More adventures, more music, and every good thing coming your way 💕</li>
+      </ul>
+      <div style="display:flex; flex-direction:column; align-items:center; margin-top:1.25rem; gap:0.5rem;">
+        <button class="btn" onclick="goTo(5)">Finish 🎂</button>
+        <button class="btn btn-ghost" onclick="goTo(3)">← Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="page" id="page-5">
+    <div class="card">
+      <div style="font-size:3rem; margin-bottom:0.75rem;">🎂</div>
+      <h2 class="page-title" style="font-size:2.4rem;">Happy birthday,<br><em>Tommy</em></h2>
+      <p style="font-size:1rem; color:#a0527a; font-weight:300; line-height:1.7; margin: 1rem 0 1.5rem;">
+        I love you more than I know how to say.<br>Here's to you. 🥂
+      </p>
+      <div class="hearts-row" style="font-size:2rem; letter-spacing:0.4em;">💕 💕 💕</div>
+      <button class="btn btn-ghost" style="margin-top:1.5rem;" onclick="goTo(0)">↩ Start over</button>
+    </div>
+  </div>
+
+  <div class="nav-dots" id="nav-dots"></div>
+</div>
+
+<script>
+  const totalPages = 6;
+  let current = 0;
+  const dotsEl = document.getElementById('nav-dots');
+  for (let i = 0; i < totalPages; i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goTo(i);
+    dotsEl.appendChild(d);
+  }
+  function goTo(n) {
+    document.getElementById('page-' + current).classList.remove('active');
+    document.querySelectorAll('.dot')[current].classList.remove('active');
+    current = n;
+    document.getElementById('page-' + current).classList.add('active');
+    document.querySelectorAll('.dot')[current].classList.add('active');
+  }
+  const colors = ['#f48fb1','#ce93d8','#f06292','#ba68c8','#e91e8c'];
+  const site = document.getElementById('site');
+  for (let i = 0; i < 18; i++) {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    p.style.cssText = `left:${Math.random()*100}%;background:${colors[Math.floor(Math.random()*colors.length)]};width:${8+Math.random()*10}px;height:${10+Math.random()*14}px;animation-duration:${6+Math.random()*10}s;animation-delay:${Math.random()*8}s;top:-20px;border-radius:${Math.random()>0.5?'50% 0 50% 0':'0 50% 0 50%'};`;
+    site.appendChild(p);
+  }
+</script>

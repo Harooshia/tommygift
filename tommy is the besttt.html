@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>17 Fragments | Tommy</title>
+    <style>
+        body {
+            background-color: #050505;
+            color: white;
+            font-family: 'serif';
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 40px 20px;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('cityscape-clouds-sunset-starry-night-wallpaper-preview.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        h1 {
+            letter-spacing: 10px;
+            font-weight: 200;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 15px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .day-box {
+            aspect-ratio: 1;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: 0.3s;
+            background: rgba(0,0,0,0.5);
+            font-size: 1.2em;
+            letter-spacing: 2px;
+        }
+
+        .day-box:hover {
+            background: white;
+            color: black;
+            box-shadow: 0 0 15px white;
+        }
+
+        /* Modal / Pop-up Styling */
+        #modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: #0a0a0a;
+            border: 1px solid #333;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        #modal-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 1px solid #555;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            letter-spacing: 3px;
+        }
+
+        .close-btn:hover { border-color: white; }
+
+        .mai-mini {
+            width: 80px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>17 Fragments</h1>
+
+    <div class="grid" id="grid">
+        </div>
+
+    <div id="modal">
+        <div class="modal-content">
+            <img src="9176c589c92a76efb817a0d68f3753a7-removebg-preview.png" class="mai-mini">
+            <div id="modal-text"></div>
+            <button class="close-btn" onclick="closeModal()">CLOSE</button>
+        </div>
+    </div>
+
+<script>
+    const messages = [
+        "Just a reminder that the world got a lot brighter in 2009. I'm glad you're here, Tommy.",
+        "I love the way your mind works. You see things most people miss.",
+        "You’re my favorite person to talk to, even when we’re just saying nothing.",
+        "17 years looks good on you. Your energy is unmatched.",
+        "Just thinking about you makes the 'everyday' feel a lot more wonderful.",
+        "You have the best taste in music. Thanks for 'draining' my heart.",
+        "You're more important to me than I can probably put into words.",
+        "I hope you're being nice to yourself today. You deserve it.",
+        "Even through a screen, you feel closer to me than anyone else.",
+        "You’re the 'true ending' I was always looking for.",
+        "17 days of celebrating you isn't even enough, honestly.",
+        "I'm so proud of the person you're becoming.",
+        "Your existence is the best plot twist in my life.",
+        "Just a few more days until the big 17. Stay lucky.",
+        "I love our little world. It’s the only one that matters.",
+        "Tomorrow is the day. I’m so lucky I get to be your spouse.",
+        "Happy Birthday, Tommy. You are my whole horizon. ❤️"
+    ];
+
+    const grid = document.getElementById('grid');
+    const modal = document.getElementById('modal');
+    const modalText = document.getElementById('modal-text');
+
+    // Create boxes for 17 days
+    for (let i = 0; i < 17; i++) {
+        const box = document.createElement('div');
+        box.className = 'day-box';
+        box.innerText = i + 1;
+        box.onclick = () => openDay(i);
+        grid.appendChild(box);
+    }
+
+    function openDay(index) {
+        modalText.innerHTML = messages[index];
+        modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

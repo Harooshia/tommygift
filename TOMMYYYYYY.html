@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        #sky { height: 100vh; transition: 2s; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(#1a1a2e, #16213e); }
+        .mai { height: 80%; position: absolute; bottom: 0; filter: brightness(0.6); }
+        #message { color: white; font-size: 1.5em; text-align: center; z-index: 5; letter-spacing: 3px; font-style: italic; }
+    </style>
+</head>
+<body onclick="changeSky()">
+    <div id="sky">
+        <div id="message">Click to change the world.</div>
+        <img src="9176c589c92a76efb817a0d68f3753a7-removebg-preview.png" class="mai">
+    </div>
+<script>
+    const truths = ["The world is only as big as your heart.", "You are the most important person in this timeline.", "17 years of beauty.", "I'm glad we exist under the same sky."];
+    let i = 0;
+    function changeSky() {
+        const sky = document.getElementById('sky');
+        const colors = ['linear-gradient(#ff9a9e, #fad0c4)', 'linear-gradient(#a18cd1, #fbc2eb)', 'linear-gradient(#000, #434343)'];
+        sky.style.background = colors[i % colors.length];
+        document.getElementById('message').innerText = truths[i % truths.length];
+        i++;
+    }
+</script>
+</body>
+</html>
